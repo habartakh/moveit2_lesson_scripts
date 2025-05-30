@@ -110,6 +110,20 @@ ament_target_dependencies(cartesian_trajectory
     control_msgs
 )
 
+# draw x cartesian approach retreat node
+add_executable(draw_x_cartesian_trajectory src/draw_x_cartesian_trajectory.cpp)
+target_include_directories(draw_x_cartesian_trajectory PUBLIC include)
+ament_target_dependencies(draw_x_cartesian_trajectory
+    ament_cmake
+    rclcpp
+    rclcpp_action
+    moveit_core
+    moveit_ros_planning_interface
+    interactive_markers
+    moveit_ros_planning
+    control_msgs
+)
+
 # Install the executable
 install(TARGETS 
     joint_space_trajectory
@@ -118,6 +132,7 @@ install(TARGETS
 	gripper_control
 	approach_retreat_trajectory
 	cartesian_trajectory
+	draw_x_cartesian_trajectory
     DESTINATION lib/${PROJECT_NAME}
 )
 
